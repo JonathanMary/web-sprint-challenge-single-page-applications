@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import * as Yup from 'yup'
 
 const initialFormValues = {
     name: '',
@@ -14,6 +15,30 @@ export default function Pizza() {
     const [pizzas, setPizzas] = useState([])
     const [formValues, setFormValues] = useState(initialFormValues)
 
+    //test form validity
+    const schema = Yup.object().shape({
+        name: Yup.string()
+                 .required("You have to select a pizza.")
+                 .min(2, 'Pizza must be at least 2 characters long.'),
+        size: Yup.string()
+                 .required("You have to select a pizza Size."),
+        pepperoni: Yup.boolean(),
+        tomatoes: Yup.boolean(),
+        sausage: Yup.boolean(),
+        olives: Yup.boolean(),
+        instructions: Yup.string(),
+    });
+    const [errors, setErrors] = useState({
+        name: '',
+        size:'',
+        pepperoni: '',
+        tomatoes: '',
+        sausage: '',
+        olives: '',
+        instructions: '',
+    });
+    
+
     //onChange event, record pizza composition, add to formValues
     const onChange = evt => {
         const { name, value, type, checked } = evt.target
@@ -24,18 +49,20 @@ export default function Pizza() {
     //onClick event, create Pizza and add to pizzas state
     const onClick = evt => {
         evt.preventDefault()
-        const newPizza = {
-            name: formValues.name,
-            size: formValues.size,
-            instructions: formValues.instructions.trim(),
-            pepperoni: formValues.pepperoni,
-            tomatoes: formValues.tomatoes,
-            sausage: formValues.sausage,
-            olives: formValues.olives,
-        
+        if(schema.isValid(formValues)){
+            const newPizza = {
+                name: formValues.name,
+                size: formValues.size,
+                instructions: formValues.instructions.trim(),
+                pepperoni: formValues.pepperoni,
+                tomatoes: formValues.tomatoes,
+                sausage: formValues.sausage,
+                olives: formValues.olives,
+            
+            }
+            setPizzas([newPizza, ...pizzas])
+            setFormValues(initialFormValues);
         }
-        setPizzas([newPizza, ...pizzas])
-        setFormValues(initialFormValues);
     }
 
     return (
@@ -51,7 +78,6 @@ export default function Pizza() {
                         name='name'
                         onChange={onChange}
                         value={formValues.name}
-                        minLength='2'
                     ></input>
                 </label>
                 <br />
