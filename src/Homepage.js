@@ -6,7 +6,8 @@ export default function Homepage() {
 
     return (
         <div className='homepage'>
-            <Link to='/pizza'>Pizza?</Link>
+            <h2>Your favorite food, delivered while coding!</h2>
+            <Link to='/pizza' className='homepage-link'>Pizza?</Link>
         </div>
     )
 }

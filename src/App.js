@@ -12,8 +12,8 @@ const App = () => {
         <header className='header'>
           <h1>Lambda Eats</h1>
           <nav>
-            <NavLink to='/'>Home</NavLink>
-            <NavLink to={"PUT SOMETHING"}>Help</NavLink>
+            <NavLink to='/' className='nav-buttons'>Home</NavLink>
+            <NavLink to={"PUT SOMETHING"} className='nav-buttons'>Help</NavLink>
           </nav>
         </header>
 

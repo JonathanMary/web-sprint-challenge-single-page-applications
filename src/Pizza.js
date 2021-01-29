@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import * as Yup from 'yup'
 
 const initialFormValues = {
@@ -12,8 +13,11 @@ const initialFormValues = {
 }
 
 export default function Pizza() { 
+
     const [pizzas, setPizzas] = useState([])
     const [formValues, setFormValues] = useState(initialFormValues)
+
+    const history = useHistory();
 
     //test form validity
     const schema = Yup.object().shape({
@@ -63,17 +67,22 @@ export default function Pizza() {
             }
             setPizzas([newPizza, ...pizzas])
             setFormValues(initialFormValues);
+            console.log(pizzas)
+            history.push({
+                pathname: '/confirmation',
+                state: {detail: pizzas},
+            })
         })
     }
 
     return (
-        <div>
-            <div>Build Your Own Pizza</div>
-            <form >
+        <div className='pizza'>
+            <h2>Build Your Own Pizza</h2>
+            <form className='form'>
 
             {/* FIRST PART, SIZE, PIZZA NAME */}
 
-            <label>Pizza Name
+                <label><div className="choice-title">Name</div>
                     <input
                         type='text'
                         name='name'
@@ -81,11 +90,17 @@ export default function Pizza() {
                         value={formValues.name}
                     ></input>
                 </label>
-                <br />
+
+                <label><div className="choice-title sauces">Choice of Sauce</div>
+                    <input name='sauce' type='radio'/><span>Original Red</span>
+                    <input name='sauce' type='radio'/><span>Garlic Ranch</span>
+                    <input name='sauce' type='radio'/><span>BBQ Sauce</span>
+                    <input name='sauce' type='radio'/><span>Spinach Alfredo</span>
+                </label>
 
                 {/* SECOND PART, SIZE, DROPDOWN MENU */}
 
-                <label>Choice of Size
+                <label><div className="choice-title">Choice of Size</div>
                     <select name='size' value={formValues.size} onChange={onChange}>
                         <option value=''>Select</option>
                         <option value='Small'>Small, 8"</option>
@@ -96,44 +111,48 @@ export default function Pizza() {
 
                 {/* THIRD PART, TOPPINGS, CHECKBOXES */}
 
-                <div>Add Toppings</div>
-                <label>Pepperoni
+                <div className="choice-title">Add Toppings</div>
+                <label>
                     <input
                         name="pepperoni"
                         type="checkbox"
                         onChange={onChange}
                         checked={formValues.pepperoni}
-                    ></input>
+                    ></input><span>Pepperoni</span>
                 </label>
-                <label>Diced Tomatoes
+                <label>
                     <input
                         name="tomatoes"
                         type="checkbox"
                         onChange={onChange}
                         checked={formValues.tomatoes}
-                    ></input>
+                    ></input><span>Diced Tomatoes</span>
                 </label>
-                <label>Sausage
+                <label>
                     <input
                         name="sausage"
                         type="checkbox"
                         onChange={onChange}
                         checked={formValues.sausage}
-                    ></input>
+                    ></input><span>Sausage</span>
                 </label>
-                <label>Black Olives
+                <label>
                     <input
                         name="olives"
                         type="checkbox"
                         onChange={onChange}
                         checked={formValues.olives}
-                    ></input>
+                    ></input><span>Black Olives</span>
                 </label>
-                <br />
+
+                <label><div className="choice-title">Choice of Substitute</div>
+                    <input name='gluten' type="radio" /><input name='gluten' type="radio" />
+                    <span>Gluten Free Crust (+$1.00)</span>
+                </label>
 
                 {/* FOURTH PART, INSTRUCTIONS, TEXT INPUT */}
 
-                <label>Special Instructions
+                <label><div className="choice-title">Special Instructions</div>
                     <input
                         type='text'
                         name='instructions'
@@ -141,8 +160,7 @@ export default function Pizza() {
                         value={formValues.instructions}
                     ></input>
                 </label>
-                <br />
-                <button onClick={onClick}>Submit</button>
+                <button onClick={onClick}>Order</button>
             </form>
         </div>
     )
