@@ -1,10 +1,35 @@
 import React from "react";
+import { NavLink, Switch, Route } from 'react-router-dom'
+import Homepage from './Homepage'
+import Pizza from './Pizza'
+import Confirmation from './Confirmation'
+
 
 const App = () => {
   return (
     <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
+      <div className='container'>
+        <header className='header'>
+          <h1>Lambda Eats</h1>
+          <nav>
+            <NavLink to='/'>Home</NavLink>
+            <NavLink to={"PUT SOMETHING"}>Help</NavLink>
+          </nav>
+        </header>
+
+        <Switch>
+          <Route path='/confirmation'>
+            <Confirmation />
+          </Route>
+          <Route path='/pizza'>
+            <Pizza />
+          </Route>
+          <Route path='/'>
+            <Homepage />
+          </Route>
+        </Switch>
+      </div>
+
     </>
   );
 };
