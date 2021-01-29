@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import * as Yup from 'yup'
 
 const initialFormValues = {
@@ -28,7 +28,7 @@ export default function Pizza() {
         olives: Yup.boolean(),
         instructions: Yup.string(),
     });
-    const [errors, setErrors] = useState({
+    /*const [errors, setErrors] = useState({
         name: '',
         size:'',
         pepperoni: '',
@@ -36,7 +36,7 @@ export default function Pizza() {
         sausage: '',
         olives: '',
         instructions: '',
-    });
+    });*/
     
 
     //onChange event, record pizza composition, add to formValues
@@ -49,7 +49,8 @@ export default function Pizza() {
     //onClick event, create Pizza and add to pizzas state
     const onClick = evt => {
         evt.preventDefault()
-        if(schema.isValid(formValues)){
+        schema.isValid(formValues).then(valid => {
+            if(valid === false){return;}
             const newPizza = {
                 name: formValues.name,
                 size: formValues.size,
@@ -62,7 +63,7 @@ export default function Pizza() {
             }
             setPizzas([newPizza, ...pizzas])
             setFormValues(initialFormValues);
-        }
+        })
     }
 
     return (

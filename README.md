@@ -42,7 +42,7 @@ Demonstrate your understanding of this week's concepts by answering the followin
 - [/] Add your team lead as collaborator on Github
 - [x] Clone your OWN version of the repository (Not Lambda's by mistake!)
 - [x] Create a new branch: `git checkout -b <firstName-lastName>`
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
 - [x] Push commits: `git push origin <firstName-lastName>`
 
 ### Task 2: Project Requirements
@@ -52,7 +52,7 @@ Your finished project must include all of the following requirements:
 - [x] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
 - [x] A form with a "/pizza" route
 - [x] A name text input field
-- [ ] Validation for name - name must be at least 2 characters
+- [x] Validation for name - name must be at least 2 characters
 - [x] A dropdown for pizza size
 - [x] A checklist for toppings - at least 4 (hint: name each separately!)
 - [x] Text input for special instructions
@@ -92,6 +92,6 @@ One of your goals is to return a database record of the order - for this you'll 
 
 Follow these steps for completing your project.
 
-- [ ] Submit a pull request to merge `<firstName-lastName>` branch into the `main` branch (student's repo). **Please don't merge your own pull request**
-- [ ] Add your team lead as a reviewer on the pull request
-- [ ] Your team lead will count the project as complete after receiving your pull request
+- [x] Submit a pull request to merge `<firstName-lastName>` branch into the `main` branch (student's repo). **Please don't merge your own pull request**
+- [/] Add your team lead as a reviewer on the pull request
+- [/] Your team lead will count the project as complete after receiving your pull request
