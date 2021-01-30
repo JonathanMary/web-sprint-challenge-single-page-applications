@@ -11,3 +11,52 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h2{
+  margin: 8vh 0;
+}
+.container {
+  box-sizing: border-box;
+  margin: 0 4vw;
+  text-align: center;
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ul{
+  display: flex;
+}
+.pizza{
+  margin: 4vw 12vw;
+}
+.form{
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.nav-buttons, .homepage-link{
+  text-decoration: none;
+  margin: 0 2vw;
+  padding: 5px;
+  background-color: paleturquoise;
+  border: 1px lightblue solid;
+  border-radius: 5px;
+}
+.choice-title{
+  background-color: paleturquoise;
+  border: 1px lightblue solid;
+  border-radius: 5px;
+  padding-left: 5px;
+  margin: 5px 0;
+}
+button{
+  background-color: palegreen;
+  border-radius: 5px;
+}
+.sauces{
+  display: flex;
+  flex-direction: column;
+}
